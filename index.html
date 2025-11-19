@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sistema de Gestión de Pacientes</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <style>
+  html, body {
+    height: 100%;
+  }
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+  footer {
+    margin-top: auto; /* empuja el footer al fondo */
+  }
+</style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="index.html">Clínica Salud+</a>
+  </div>
+</nav>
+
+<header class="bg-light py-5 text-center">
+  <h1 class="fw-bold">Sistema de Gestión de Pacientes y Citas Médicas</h1>
+  <p class="lead">Registra pacientes, administra citas y controla prioridades de atención.</p>
+  <a href="registro.html" class="btn btn-primary btn-lg mt-3 btnReg">Registrar paciente</a>
+</header>
+
+<section class="container py-5">
+
+  <div class="row text-center">
+
+    <div class="col-md-6">
+      <div class="card p-3 shadow">
+        <h4>Pacientes</h4>
+        <p>Regístrate, solicita citas y consulta tu historial médico.</p>
+        <a href="login.html" class="btn btn-outline-primary">Entrar</a>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="card p-3 shadow">
+        <h4>Médicos</h4>
+        <p>Revisa tus citas asignadas y atiende pacientes según prioridad.</p>
+        <a href="login_medico.html" class="btn btn-outline-primary">Entrar</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer class="text-center p-3 bg-dark text-light">
+  © 2025 Clínica Salud+ - Sistema de Gestión
+</footer>
+
+<script src="app.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+</body>
+</html>

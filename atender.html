@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <title>Atender Pacientes - Clínica</title>
+  <style>
+  html, body {
+    height: 100%;
+  }
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+  footer {
+    margin-top: auto;
+  }
+  .alert-info {
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+    color: #0c5460;
+  }
+  main {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;   
+  align-items: center;       
+}
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg bg-primary navbar-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">Clínica Salud+</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="registro.html">Registro</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="cita.html">Cita</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="atender.html">Atender</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+  <div class="container mt-5">
+    <div class="row">
+      <!-- Columna principal: Atender siguiente -->
+      <div class="col-md-6">
+        <section class="text-center">
+          <h2>Atender Siguiente Paciente</h2>
+          <p class="text-muted">Los pacientes se atienden por orden de prioridad (ALTA → MEDIA → BAJA)</p>
+          <br>
+          
+          <button id="btnAtender" class="btn btn-primary btn-lg" style="width: 100%; max-width: 400px;">
+            <i class="bi bi-clipboard-check"></i> Atender Siguiente
+          </button>
+          
+          <div class="mt-4">
+            <pre id="resAtender" class="text-start bg-light p-3 rounded"></pre>
+          </div>
+        </section>
+      </div>
+
+      <!-- Columna secundaria: Último atendido -->
+      <div class="col-md-6">
+        <section class="text-center">
+          <h2>Historial de Atención</h2>
+          <p class="text-muted">Último paciente atendido (Pila - LIFO)</p>
+          <br>
+          
+          <button id="btnUltimo" class="btn btn-primary btn-lg" style="width: 100%; max-width: 400px;">
+            <i class="bi bi-clock-history"></i> Ver Último Atendido
+          </button>
+          
+          <div class="mt-4">
+            <pre id="resUltimo" class="text-start bg-light p-3 rounded"></pre>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- Información de las estructuras de datos -->
+  </div>
+  </main>
+
+  <footer class="text-center p-3 bg-dark text-light">
+    © 2025 Clínica Salud+ - Sistema de Gestión
+  </footer>
+
+  <script src="app.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>
