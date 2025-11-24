@@ -38,12 +38,6 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="registro.html">Registro</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="cita.html">Cita</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="atender.html">Atender</a>
           </li>
         </ul>
@@ -99,5 +93,37 @@
 
   <script src="app.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+    <script>
+  // Verificar si el médico está logueado
+  const medicoLogueado = localStorage.getItem('medicoLogueado') || sessionStorage.getItem('medicoLogueado');
+  
+  if (!medicoLogueado) {
+    // Si no está logueado, redirigir al login
+    window.location.href = 'login_medicos.html';
+  }
+  
+  // Agregar botón de cerrar sesión al navbar (opcional)
+  document.addEventListener('DOMContentLoaded', function() {
+    const navbar = document.querySelector('.navbar-nav');
+    if (navbar) {
+      const logoutItem = document.createElement('li');
+      logoutItem.className = 'nav-item ms-auto';
+      logoutItem.innerHTML = `
+        <a class="nav-link" href="#" id="btnLogout">
+          👋 Cerrar Sesión (${medicoLogueado})
+        </a>
+      `;
+      navbar.appendChild(logoutItem);
+      
+      document.getElementById('btnLogout').addEventListener('click', function(e) {
+        e.preventDefault();
+        localStorage.removeItem('medicoLogueado');
+        sessionStorage.removeItem('medicoLogueado');
+        window.location.href = 'login_medicos.html';
+      });
+    }
+  });
+</script>
 </body>
 </html>
