@@ -1,5 +1,7 @@
-// Variable global para guardar la prioridad seleccionada
-let prioridadSeleccionada = 'MEDIA';
+// -------------------------------------------------------
+//  PRIORIDAD SELECCIONADA (por defecto MEDIA)
+// -------------------------------------------------------
+let prioridadSeleccionada = "MEDIA";
 
 // -------------------------------------------------------
 //  REGISTRAR PACIENTE
@@ -26,13 +28,13 @@ if (btnReg) {
 
       const data = await res.json();
       document.getElementById('resReg').textContent = 
-        `✓ Paciente registrado exitosamente\nID: ${data.id}\nNombre: ${data.nombre} ${data.apellidos}`;
+        `Paciente registrado exitosamente\nID: ${data.id}\nNombre: ${data.nombre} ${data.apellidos}`;
       
-      // Limpiar formulario
       document.getElementById('nombre').value = '';
       document.getElementById('apellidos').value = '';
       document.getElementById('edad').value = '';
       document.getElementById('telefono').value = '';
+
     } catch (e) {
       document.getElementById('resReg').textContent = 'Error: ' + e.message;
     }
@@ -66,7 +68,6 @@ if (btnCita) {
         return;
       }
 
-      // Obtener paciente
       const pRes = await fetch('http://localhost:8080/api/pacientes/' + pacienteId);
       if (!pRes.ok) {
         document.getElementById('resCita').textContent = 'Error: Paciente no encontrado';
@@ -75,30 +76,30 @@ if (btnCita) {
 
       const paciente = await pRes.json();
 
-      // Solicitar cita
+      // ENVIAR PRIORIDAD COMO OBJETO { nombre: "ALTA" } 
       const res = await fetch('http://localhost:8080/api/citas/solicitar', {
         method: 'POST',
         headers: {'Content-Type':'application/json'},
         body: JSON.stringify({ 
           paciente, 
           motivo, 
-          prioridad: prioridadSeleccionada 
+          prioridad: { nombre: prioridadSeleccionada }
         })
       });
 
       const data = await res.json();
-      document.getElementById('resCita').textContent = 
-        `✓ Cita solicitada exitosamente\n` +
+      document.getElementById('resCita').textContent =
+        `Cita solicitada exitosamente\n` +
         `ID Cita: ${data.id}\n` +
         `Paciente: ${data.paciente.nombre} ${data.paciente.apellidos}\n` +
         `Motivo: ${data.motivo}\n` +
-        `Prioridad: ${data.prioridad}`;
-      
-      // Limpiar formulario
+        `Prioridad: ${data.prioridad.nombre}`;
+
       document.getElementById('idPaciente').value = '';
       document.getElementById('motivo').value = '';
       prioridadSeleccionada = 'MEDIA';
       document.querySelector('.prioridad').textContent = 'Prioridad';
+
     } catch (e) {
       document.getElementById('resCita').textContent = 'Error: ' + e.message;
     }
@@ -123,11 +124,11 @@ if (btnAtender) {
 
       const data = await res.json();
       document.getElementById('resAtender').textContent = 
-        `✓ Paciente atendido\n` +
+        `Paciente atendido\n` +
         `ID Cita: ${data.id}\n` +
         `Paciente: ${data.paciente.nombre} ${data.paciente.apellidos}\n` +
         `Motivo: ${data.motivo}\n` +
-        `Prioridad: ${data.prioridad}`;
+        `Prioridad: ${data.prioridad.nombre}`;
     } catch (e) {
       document.getElementById('resAtender').textContent = 'Error: ' + e.message;
     }
@@ -153,7 +154,7 @@ if (btnUltimo) {
         `Último paciente atendido:\n` +
         `Paciente: ${data.paciente.nombre} ${data.paciente.apellidos}\n` +
         `Motivo: ${data.motivo}\n` +
-        `Prioridad: ${data.prioridad}`;
+        `Prioridad: ${data.prioridad.nombre}`;
     } catch (e) {
       document.getElementById('resUltimo').textContent = 'Error: ' + e.message;
     }
@@ -199,7 +200,7 @@ if (btnListar) {
 }
 
 // -------------------------------------------------------
-//  ACTIVAR LINK CORRESPONDIENTE SEGÚN LA URL
+//  ACTIVAR LINK SEGÚN URL
 // -------------------------------------------------------
 document.addEventListener("DOMContentLoaded", () => {
   const navLinks = document.querySelectorAll(".nav-link");
